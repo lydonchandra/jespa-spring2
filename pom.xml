@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-security-jespa</artifactId>
+  <name>Spring Jespa</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <description>With this extension, you can easily configure NTLM authentication with Spring-Security and Jespa library</description>
+  <url>http://code.google.com/p/jespa-spring/</url>
+  <issueManagement>
+  	<system>Google Project Hosting</system>
+  	<url>http://code.google.com/p/jespa-spring/issues/list</url>
+  </issueManagement>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-core</artifactId>
+  		<version>${SPRING.SECURITY.VERSION}</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-web</artifactId>
+  		<version>${SPRING.SECURITY.VERSION}</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-config</artifactId>
+  		<version>${SPRING.SECURITY.VERSION}</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>servlet-api</artifactId>
+  		<version>2.5</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  </dependencies>
+  <properties>
+  	<SPRING.SECURITY.VERSION>3.0.3.RELEASE</SPRING.SECURITY.VERSION>
+  </properties>
+</project>
