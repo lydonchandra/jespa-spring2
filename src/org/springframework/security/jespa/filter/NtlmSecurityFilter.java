@@ -1,9 +1,11 @@
 /**
  * NtlmSecurityFilter
  * 
- * Project: jespa-spring
+ * Project: jespa-spring2
  * Licence: Apache License, Version 2.0
  * @author Tomek Kuprowski
+ * Changes:
+ * Lydon Chandra 18-October-2010 Springify to spring-security-2.0.x 
  */
 package org.springframework.security.jespa.filter;
 
@@ -19,13 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import jespa.http.HttpSecurityServletRequest;
 
-import org.springframework.security.authentication.AuthenticationDetailsSource;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.Authentication;
+import org.springframework.security.AuthenticationException;
+import org.springframework.security.AuthenticationManager;
+import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.security.jespa.authentication.NtlmAuthenticationToken;
-import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.ui.AuthenticationDetailsSource;
+import org.springframework.security.ui.AuthenticationEntryPoint;
 import org.springframework.util.Assert;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -35,13 +37,13 @@ import org.springframework.web.filter.GenericFilterBean;
 public class NtlmSecurityFilter extends GenericFilterBean {
 
 	/** The authentication details source. */
-	private AuthenticationDetailsSource authenticationDetailsSource;
+	private org.springframework.security.ui.AuthenticationDetailsSource authenticationDetailsSource;
 
 	/** The authentication entry point. */
-	private AuthenticationEntryPoint authenticationEntryPoint;
+	private org.springframework.security.ui.AuthenticationEntryPoint authenticationEntryPoint;
 
 	/** The authentication manager. */
-	private AuthenticationManager authenticationManager;
+	private org.springframework.security.AuthenticationManager authenticationManager;
 
 	/* (non-Javadoc)
 	 * @see org.springframework.web.filter.GenericFilterBean#afterPropertiesSet()
@@ -58,7 +60,7 @@ public class NtlmSecurityFilter extends GenericFilterBean {
 	 * @return true, if authentication is required
 	 */
 	private boolean authenticationIsRequired(Principal principal) {
-		Authentication existingAuth = SecurityContextHolder.getContext().getAuthentication();
+		org.springframework.security.Authentication existingAuth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (existingAuth == null || !existingAuth.isAuthenticated() || principal == null) {
 			return true;
@@ -72,7 +74,6 @@ public class NtlmSecurityFilter extends GenericFilterBean {
 	/* (non-Javadoc)
 	 * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
 	 */
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		final boolean debug = logger.isDebugEnabled();
