@@ -1,46 +1,133 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework</groupId>
-  <artifactId>spring-security-jespa</artifactId>
-  <name>Spring Jespa</name>
+  <artifactId>spring-security2-jespa</artifactId>
+  <name>Spring2 Jespa</name>
   <version>1.0.0-SNAPSHOT</version>
-  <description>With this extension, you can easily configure NTLM authentication with Spring-Security and Jespa library</description>
-  <url>http://code.google.com/p/jespa-spring/</url>
+  <description>Easily configure NTLM authentication with Spring-Security-2.0.x and Jespa library</description>
+  <url>http://github.com/lydonchandra/jespa-spring2 and http://code.google.com/p/jespa-spring/ (for spring-security 3.x) </url>
   <issueManagement>
-  	<system>Google Project Hosting</system>
-  	<url>http://code.google.com/p/jespa-spring/issues/list</url>
+  	<system>Github</system>
+  	<url>http://github.com/lydonchandra/jespa-spring2/issues</url>
   </issueManagement>
   <dependencies>
-  	<dependency>
-  		<groupId>org.springframework.security</groupId>
-  		<artifactId>spring-security-core</artifactId>
-  		<version>${SPRING.SECURITY.VERSION}</version>
-  		<type>jar</type>
+  	
+  		<dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+    
+    
+    <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>2.0.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-support</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-dao</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-jdbc</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core-tiger</artifactId>
+                <version>2.0.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-support</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-dao</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-jdbc</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            
+    	<dependency>
+	  		<groupId>javax.servlet</groupId>
+	  		<artifactId>servlet-api</artifactId>
+	  		<version>2.5</version>
+	  		<type>jar</type>
   		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.springframework.security</groupId>
-  		<artifactId>spring-security-web</artifactId>
-  		<version>${SPRING.SECURITY.VERSION}</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.springframework.security</groupId>
-  		<artifactId>spring-security-config</artifactId>
-  		<version>${SPRING.SECURITY.VERSION}</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>javax.servlet</groupId>
-  		<artifactId>servlet-api</artifactId>
-  		<version>2.5</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
-  	</dependency>
+  		</dependency>
   </dependencies>
   <properties>
-  	<SPRING.SECURITY.VERSION>3.0.3.RELEASE</SPRING.SECURITY.VERSION>
+  	
   </properties>
 </project>
