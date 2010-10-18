@@ -1,20 +1,20 @@
 /**
  * NtlmAuthenticationToken
  * 
- * Project: jespa-spring
+ * Project: jespa-spring2
  * Licence: Apache License, Version 2.0
  * @author Tomek Kuprowski
+ * Changes:
+ * Lydon Chandra 18-October-2010 Springify to spring-security-2.0.x 
  */
 package org.springframework.security.jespa.authentication;
 
 import java.security.Principal;
-import java.util.Arrays;
-import java.util.Collection;
 
 import jespa.security.SecurityPrincipal;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.GrantedAuthority;
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
 
 /**
  * Authentication token which stores only principal (domain winlogin)
@@ -45,17 +45,18 @@ public class NtlmAuthenticationToken extends UsernamePasswordAuthenticationToken
 		setAuthenticated(false);
 	}
 
-	/**
-	 * Instantiates a new ntlm authentication token.
-	 *
-	 * @param principal the principal
-	 * @param credentials the credentials
-	 * @param authorities the authorities
-	 */
-	public NtlmAuthenticationToken(Principal principal, Object credentials,
-			Collection<? extends GrantedAuthority> authorities) {
-		super(principal, credentials, authorities);
-	}
+//	/**
+//	 * Instantiates a new ntlm authentication token.
+//	 *
+//	 * @param principal the principal
+//	 * @param credentials the credentials
+//	 * @param authorities the authorities
+//	 */
+//	public NtlmAuthenticationToken(Principal principal, Object credentials,
+//			List authorities) {
+//		
+//		super(principal, credentials, authorities);
+//	}
 
 	/**
 	 * Instantiates a new ntlm authentication token.
@@ -65,7 +66,7 @@ public class NtlmAuthenticationToken extends UsernamePasswordAuthenticationToken
 	 * @param authorities the authorities
 	 */
 	public NtlmAuthenticationToken(Principal principal, Object credentials, GrantedAuthority[] authorities) {
-		this(principal, credentials, Arrays.asList(authorities));
+		super(principal, credentials, authorities);
 	}
 
 	/* (non-Javadoc)
